@@ -1,7 +1,13 @@
 dangoOLED library 
 
-3shokudango(jyujyun) 2023/10/26
+3shokudango(jyujyun)
 
+2023/10/26
+
+2023/10/28
+
+Github Page:https://github.com/jyujyun/dangoOLED
+HomePage :https://3shokudango.web.fc2.com
 Mail:jyujyun@aol.com
 
 [EN]
@@ -27,9 +33,12 @@ light=1:on
 light=0:off
 OLED.OLED_line(x1,y1,x2,y2) - Draw a line to library buffer.
 -ToDo list
-draw char or string
+OK draw char or string
 -history
 2023/10/26 1.0.0
+2023/10/28 1.1.0
+Add draw box function.
+Add text function.
 [JP]
 ===============================
 このライブラリはi2CのSSD1306 OLEDを制御できます。
@@ -56,3 +65,5 @@ OLED.OLED_line(x1,y1,x2,y2) - 線をバッファーに書き込む。
 文字列の描写
 -更新履歴
 2023/10/26 1.0.0
+2023/10/28 1.1.0
+四角を描く機能と文字を書く機能を追加

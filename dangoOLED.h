@@ -33,6 +33,9 @@ class dangoOLED
 		void OLED_send(char oled);
 		void OLED_pixel(char dx, char dy, char po);
 		void OLED_line(char x1, char y1, char x2, char y2);
+		void OLED_char(char dx, char dy, char ch, char color = 0);
+		void OLED_string(char dx, char dy, char* str, char color = 0);
+		void OLED_box(char x1, char y1, char x2, char y2);
 		void syoki(void);
 };
 extern dangoOLED OLED;

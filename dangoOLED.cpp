@@ -15,7 +15,7 @@ Adafruit OLED ライブラリ https://github.com/adafruit/Adafruit_SSD1306
 #include <avr/pgmspace.h>
 
 #include "dangoOLED.h"
-
+#include "font.h";
 
 dangoOLED::dangoOLED(void){}
 
@@ -77,7 +77,8 @@ void dangoOLED::OLED_pixel(char dx, char dy, char po)
 	}
 	OLED_buff[(dx + (y1 * 128))] = tmp_buff;
 }
-void dangoOLED::OLED_line(char x1, char y1, char x2, char y2) {
+void dangoOLED::OLED_line(char x1, char y1, char x2, char y2) 
+{
   char dx = abs(x2-x1), sx = x1<x2 ? 1 : -1;
   char dy = abs(y2-y1), sy = y1<y2 ? 1 : -1;
   char err = (dx>dy ? dx : -dy)/2, e2;
@@ -89,7 +90,19 @@ void dangoOLED::OLED_line(char x1, char y1, char x2, char y2) {
      if (e2 < dy) { err += dx;y1 += sy; }
   }
 }
-
+void dangoOLED::OLED_box(char x1, char y1, char x2, char y2)
+{
+	for (char i = x1; i <= x2; i++)
+	{
+		OLED.OLED_pixel(i, y1,1);
+		OLED.OLED_pixel(i, y2, 1);
+	}
+	for (char i = y1; i <= y2; i++)
+	{
+		OLED.OLED_pixel(x1, i, 1);
+		OLED.OLED_pixel(x2, i, 1);
+	}
+}
 void dangoOLED::OLED_send(char oled)
 {
 	if (oled == 0)
@@ -126,8 +139,29 @@ void dangoOLED::OLED_send(char oled)
 		}
 	}
 }
+void dangoOLED::OLED_char(char dx, char dy,char ch,char color = 0) {
+	ch -= 32;
+	dx *= 8;
+	for (char i = 0; i < 6; i++)
+	{
+		if (color == 0)
+		{
+			OLED_buff[(dy * 128) + dx + i] = pgm_read_byte(&font8[ch * 6 + i]);
+		}
+		else
+		{
+			OLED_buff[(dy * 128) + dx + i] = ~(pgm_read_byte(&font8[ch * 6 + i]));
+		}
+		OLED_buff[(dy * 128) + dx + 6] = 0xFF * color;
+		OLED_buff[(dy * 128) + dx + 7] = 0xFF * color;
+	}
 
-
+}
+void dangoOLED::OLED_string(char dx, char dy,char* str,char color = 0) {
+	while (*str) {
+		OLED_char(dx++,dy,*str++,color);
+	}
+}
 
 void dangoOLED::syoki(void)
 {
