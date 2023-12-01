@@ -1,4 +1,4 @@
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 
 const uint8_t font8 [] PROGMEM = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // sp

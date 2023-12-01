@@ -1,4 +1,4 @@
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 
 const unsigned char font_jp_8[] PROGMEM = 
 {

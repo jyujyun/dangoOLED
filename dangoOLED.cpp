@@ -15,7 +15,7 @@ Adafruit OLED ライブラリ https://github.com/adafruit/Adafruit_SSD1306
 */
 
 #include <Wire.h>
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 
 #include "dangoOLED.h"
 #include "font.h";
@@ -212,6 +212,7 @@ void dangoOLED::OLED_send(char oled)
 		}
 	}
 }
+#ifdef __AVR_ATmega328P__
 void dangoOLED::OLED_char(char dx, char dy,uint16_t ch,char color = 0) {
 	
 	dx *= 8;
@@ -289,11 +290,12 @@ void dangoOLED::OLED_string(char dx, char dy,char* str,char color = 0)
 		OLED_char(dx++,dy,*str++,color);
 	}
 }
-
+#endif
 void dangoOLED::syoki(void)
 {
 	Wire.begin();
 	Wire.setClock(400000);
+	
 	delay(100);
 		
 	Wire.beginTransmission(OLED_ADD);
