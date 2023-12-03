@@ -16,6 +16,15 @@ This library can control SSD1306 OLED i2C.
 Both i2C addresses 0x7A and 0x78 (or 0x3C and 0x3D) commonly used in OLED can be used to control two screens.
 Please note that the buffer consumes 1Kbyte of RAM.
 
+-Compatible boards
+--Fully
+Atmega328PU boards(Arduino Uno R1-R3,Arduino Pro Micro etc.)
+--Some functions cannot be used
+Arduino Mega
+ESP32 Dev Module
+Arduino R4
+Atmega32U boards(Arduino Leonard,Arduino Pro Micro etc.)
+
 -functions
 [!]Please include 'dangoOLED.h' first.
 [!]Bitmap data must be save in PROGMEM.
@@ -61,6 +70,16 @@ Add more function.
 このライブラリはi2CのSSD1306 OLEDを制御できます。
 0x7A版と0x78版(Arduino内だと0x3Cと0x3D)の両方に対応しており、どちらとも並列接続すれば2つの画面を制御できます。
 RAMを1Kbyte消費するので注意してください。
+
+-対応ボード
+--全機能が使えるボード
+Atmega328PUを乗せたボード(Arduino UNO R1-R3,Arduino Pro Miniなど)
+--一部機能は使えないボード
+Arduino Mega
+ESP32 Dev Module
+Arduino UNO R4
+Atmega32Uを乗せたボード(Arduino Leonard,Arduino Pro Microなど)
+
 -関数リスト
 !注意!
 最初にdangoOLED.hをインクルードしてください。
